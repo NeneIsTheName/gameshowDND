@@ -12,7 +12,7 @@
                 </div>
                 <div class="body__competitors">
                     <p v-for="player in this.$store.state.players" class="body__competitors--names">
-                        {{ player.name }}frewiof
+                        {{ player.name }}
                     </p>
                 </div>
             </div>
