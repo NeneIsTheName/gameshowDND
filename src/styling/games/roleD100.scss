@@ -1,0 +1,84 @@
+.players-roleD100{
+    display: flex;
+    row-gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+
+    .role-card{
+        flex: 0 0 calc(33.333% - 1rem);
+        background-color: $color-cardbackground;
+        padding: $padding-card;
+        border-radius: 1rem;
+
+        .player-details{
+
+            &__name{
+
+                &--text{
+                    color: $color-text;
+                    font-weight: bold;
+                    text-align: center;
+                    font-size: 1.5rem;
+                }
+            }
+
+            &__number{
+                margin-top: 1rem;
+
+                &--text{
+                    color: $color-text;
+                    font-weight: bold;
+                    text-align: center;
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+
+.generator-card{
+    background-color: $color-cardbackground;
+    width: 100%;
+    padding: 1rem 0.7rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+
+    .between{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__number{
+            flex: 0 0 33.333%;
+            text-align: center;
+
+            &--input{
+                padding: $padding-input;
+                border: solid $color-border 1px;
+                border-radius: 1rem;
+                width: 100%;
+            }
+
+            &--text{
+                color: $color-text;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .generate{
+        &__random-number{
+            margin-top: 0.7rem;
+            text-align: center;
+
+            &--button{
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
+            }
+
+        }
+    }
+}
