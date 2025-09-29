@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    padding: 0rem 5rem;
+    padding-top: 2rem;
+}
+
+@import "./variable";
+@import "./games/competitors";
+@import "./games/roleD100";

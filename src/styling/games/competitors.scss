@@ -1,0 +1,54 @@
+.competitor{
+    background-color: $color-cardbackground;
+    width: 100%;
+    padding: $padding-card;
+    margin: 0 auto;
+    border-radius: 1.2rem;
+
+    .header{
+        &__title{
+            text-align: center;
+
+            &--text{
+                color: $color-text;
+            }
+        }
+    }
+
+    .body{
+        margin-top: 0.5rem;
+
+        &__form{
+
+            &--input{
+                width: 100%;
+                padding: $padding-input;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
+            }
+        }
+
+        &__competitors{
+            margin-top: 1rem;
+            text-align: center;
+
+            &--names{
+                color: $color-text;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .footer{
+        margin-top: 1rem;
+        text-align: center;
+
+        &__text{
+
+            &--link{
+                color: $color-text;
+                text-decoration: underline;
+            }
+        }
+    }
+}
