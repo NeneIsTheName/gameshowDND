@@ -9,7 +9,7 @@
                 </div>
                 <div class="player-details__number">
                     <p class="player-details__number--text" :id="`randomNumber${player.id}`">0</p>
-                </div>
+                </div>ds
             </section>
         </div>
         <section class="generator-card">
