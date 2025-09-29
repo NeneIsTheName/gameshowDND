@@ -51,7 +51,7 @@ export default{
             }
             else{
                 alert("Please enter a valid number")
-            }c
+            }
         }
     }
 }
