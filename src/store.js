@@ -22,7 +22,7 @@ const store = createStore({
                     })
                 }
             });
-        }
+        },
     },
 
     plugins: [
