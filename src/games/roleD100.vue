@@ -78,7 +78,7 @@ export default{
         },
         keepGold(playerID){
             console.log(this.players)
-            this.$store.commit('addPlayerGold', {id: playerID, earnedGold: this.earnedGold})
+            this.$store.commit('addGold', {id: playerID, earnedGold: this.earnedGold})
             document.getElementById(`roleCard${playerID}`).classList.add("keep")
         },
         lostGame(playerID){
