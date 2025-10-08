@@ -114,12 +114,21 @@
     .reward{
 
         &__gold{
-            text-align: center;
+            display: flex;
+            justify-content: center;
 
             &--text{
                 color: $color-text;
                 font-weight: bold;
                 font-size: 1.5rem;
+            }
+
+            &--input{
+                border: solid $color-border 1px;
+                padding: 0 0.5rem;
+                font-size: 1.5rem;
+                background-color: $color-cardbackground;
+                color: $color-text;
             }
         }
     }

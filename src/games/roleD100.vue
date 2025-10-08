@@ -21,13 +21,11 @@
                 </div>
             </section>
         </div>
-        <section class="">
-
-        </section>
         <section class="generator-card">
             <div class="reward">
                 <div class="reward__gold">
-                    <p class="reward__gold--text">Gold: {{ earnedGold }}</p>
+                    <p class="reward__gold--text">Gold:</p>
+                    <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">0</span>
                 </div>
             </div>
             <div class="between">
@@ -71,13 +69,13 @@ export default{
                     document.getElementById(`randomNumber${player.id}`).innerText = Math.floor(Math.random() * (this.between.max - this.between.min + 1)) + Number(this.between.min)
                 });
                 this.earnedGold += (this.between.min < 50) ? 5 : 10
+                document.getElementById("earnedGold").innerText = this.earnedGold
             }
             else{
                 alert("Please enter a valid number")
             }
         },
         keepGold(playerID){
-            console.log(this.players)
             this.$store.commit('addGold', {id: playerID, earnedGold: this.earnedGold})
             document.getElementById(`roleCard${playerID}`).classList.add("keep")
         },

@@ -10,7 +10,7 @@
                 <div class="body__form">
                     <input @input="add_names($event.target.value)" class="body__form--input">
                 </div>
-                <div v-for="player in this.$store.state.players" class="body__competitors">
+                <div v-for="player in this.players" class="body__competitors">
                         <p class="body__competitors--names">{{ player.name }} | Gold: </p>
                         <span contenteditable="true" class="body__competitors--input" @input="start_gold($event, player.id)">0</span>
                 </div>
@@ -28,6 +28,11 @@
 
 export default{
     name: "competitors",
+    computed: {
+        players(){
+            return this.$store.state.players
+        }
+    },
     methods: {
         add_names(name_list){
             const players = name_list.trim().split(",")
@@ -35,7 +40,6 @@ export default{
         },
         start_gold(earnedGold, playerID){
             this.$store.commit('startGold', {id: playerID, startGold: Number(earnedGold.target.innerText)})
-            console.log(this.$store.state.players)
         }
     },
 }
