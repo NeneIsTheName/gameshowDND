@@ -1,0 +1,15 @@
+.header{
+    background-color: $color-cardbackground;
+    padding: $padding-card;
+    border-radius: 0 0 2rem 2rem;
+
+    &__title{
+        text-align: center;
+
+        &--text{
+            color: $color-text;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+}

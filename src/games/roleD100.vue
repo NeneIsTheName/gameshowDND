@@ -1,56 +1,58 @@
 <template>
-    <div class="container">
-        <section class="header-roleD100">
-            <div class="header-roleD100__title">
-                <p class="header-roleD100__title--text">Role D100</p>
-            </div>
-        </section>
-        <div class="players-roleD100">
-            <section v-for="player in this.players" class="role-card" :id="`roleCard${player.id}`">
-                <div class="player-details">
-                    <div class="player-details__name">
-                        <p class="player-details__name--text">{{ player.name }}, {{ player.gold }}</p>
-                    </div>
-                    <div class="player-details__number">
-                        <p class="player-details__number--text" :id="`randomNumber${player.id}`">0</p>
-                    </div>
-                    <div class="player-details__check">
-                        <button class="player-details__check--keep" @click.once="keepGold(player.id)">Keep Gold</button>
-                        <button class="player-details__check--lost" @click.once="lostGame(player.id)">Lost Game</button>
-                    </div>
+<header_file title="RoleD100"/>
+<main class="main">
+    <div class="players-roleD100">
+        <section v-for="player in this.players" class="role-card" :id="`roleCard${player.id}`">
+            <div class="player-details">
+                <div class="player-details__name">
+                    <p class="player-details__name--text">{{ player.name }}, {{ player.gold }}</p>
                 </div>
-            </section>
-        </div>
-        <section class="generator-card">
-            <div class="reward">
-                <div class="reward__gold">
-                    <p class="reward__gold--text">Gold:</p>
-                    <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">0</span>
+                <div class="player-details__number">
+                    <p class="player-details__number--text" :id="`randomNumber${player.id}`">0</p>
                 </div>
-            </div>
-            <div class="between">
-                <div class="between__number">
-                    <input v-model="between.min" class="between__number--input" type="text">
-                </div>
-                <div class="between__number">
-                    <p class="between__number--text">and</p>
-                </div>
-                <div class="between__number">
-                    <input v-model="between.max" class="between__number--input" type="text">
-                </div>
-            </div>
-            <div class="generate">
-                <div class="generate__random-number">
-                    <button @click="generateNumber()" class="generate__random-number--button">Generate Random Number</button>
+                <div class="player-details__check">
+                    <button class="player-details__check--keep" @click.once="keepGold(player.id)">Keep Gold</button>
+                    <button class="player-details__check--lost" @click.once="lostGame(player.id)">Lost Game</button>
                 </div>
             </div>
         </section>
     </div>
+</main>
+
+<footer class="generator-card">
+    <div class="reward">
+        <div class="reward__gold">
+            <p class="reward__gold--text">Gold:</p>
+            <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">0</span>
+        </div>
+    </div>
+    <div class="between">
+        <div class="between__number">
+            <input v-model="between.min" class="between__number--input" type="text">
+        </div>
+        <div class="between__number">
+            <p class="between__number--text">and</p>
+        </div>
+        <div class="between__number">
+            <input v-model="between.max" class="between__number--input" type="text">
+        </div>
+    </div>
+    <div class="generate">
+        <div class="generate__random-number">
+            <button @click="generateNumber()" class="generate__random-number--button">Generate Random Number</button>
+        </div>
+    </div>
+</footer>
 </template>
 
 <script>
+import header_file from '../components/header.vue';
+
 export default{
     name: "roleD100",
+    components: {
+        header_file,
+    },
     data(){
         return {
             between: { min: 0, max: 0 },

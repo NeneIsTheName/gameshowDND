@@ -5,11 +5,19 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.container{
-    padding: 0rem 5rem;
-    padding-top: 2rem;
+.app{
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
+// Variables
 @import "./variable";
-@import "./games/competitors";
-@import "./games/roleD100";
+
+// Components
+@import "./components/header";
+@import "./components/main";
+
+//Game pages
+@import "./cards/competitors";
+@import "./cards/roleD100";
