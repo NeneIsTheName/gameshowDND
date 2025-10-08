@@ -46,6 +46,9 @@
                 font-size: 1.5rem;
                 background-color: $color-cardbackground;
                 color: $color-text;
+                &:focus{
+                    outline: none;
+                }
             }
         }
     }
