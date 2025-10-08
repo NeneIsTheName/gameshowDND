@@ -11,7 +11,7 @@
                     <input @input="add_names($event.target.value)" class="body__form--input">
                 </div>
                 <div v-for="player in this.$store.state.players" class="body__competitors">
-                        <label class="body__competitors--names">{{ player.name }} | Gold: </label>
+                        <p class="body__competitors--names">{{ player.name }} | Gold: </p>
                         <span contenteditable="true" class="body__competitors--input" @input="start_gold($event, player.id)">0</span>
                 </div>
             </div>
