@@ -41,7 +41,6 @@
             }
 
             &__number{
-                margin-top: 0.5rem;
 
                 &--text{
                     color: $color-text;
@@ -53,11 +52,10 @@
 
             &__check{
                 display: flex;
-                justify-content: center;
-                gap: 1rem;
+                justify-content: space-evenly;
 
                 &--keep{
-                    background-color: #2a95ff;
+                    background-color: $color-keep;
                     color: $color-text;
                     padding: 0.3rem 0.9rem;
                     border-radius: 1rem;
@@ -69,9 +67,8 @@
                 }
 
                 &--lost{
-                    background-color: #e02f2f;
+                    background-color: $color-lost;
                     color: $color-text;
-                    margin-right: 0.5rem;
                     padding: 0.3rem 0.9rem;
                     border-radius: 1rem;
                     border: solid $color-border 1px;
@@ -84,12 +81,26 @@
         }
     }
 
-    .lost{
-        background-color: #2a95ff;
+    .keep{
+        background-color: $color-keep;
+
+        .player-details{
+
+            &__check{
+                display: none;
+            }
+        }
     }
 
-    .quit{
-        background-color: #e02f2f;
+    .lost{
+        background-color: $color-lost;
+
+        .player-details{
+
+            &__check{
+                display: none;
+            }
+        }
     }
 }
 
@@ -100,10 +111,24 @@
     border-radius: 1rem;
     margin-top: 1rem;
 
+    .reward{
+
+        &__gold{
+            text-align: center;
+
+            &--text{
+                color: $color-text;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
     .between{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 0.7rem 0;
 
         &__number{
             flex: 0 0 33.333%;
@@ -125,8 +150,8 @@
     }
 
     .generate{
+
         &__random-number{
-            margin-top: 0.7rem;
             text-align: center;
 
             &--button{

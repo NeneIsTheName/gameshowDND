@@ -6,18 +6,17 @@
             </div>
         </section>
         <div class="players-roleD100">
-            <section v-for="player, index in this.players" class="role-card">
+            <section v-for="player in this.players" class="role-card" :id="`roleCard${player.id}`">
                 <div class="player-details">
                     <div class="player-details__name">
-                        <p class="player-details__name--text">{{ player.name }}</p>
-                        <p>{{ playerGold[player.id] }}</p>
+                        <p class="player-details__name--text">{{ player.name }}, {{ player.gold }}</p>
                     </div>
                     <div class="player-details__number">
                         <p class="player-details__number--text" :id="`randomNumber${player.id}`">0</p>
                     </div>
                     <div class="player-details__check">
-                        <button class="player-details__check--keep" @click="keepGold(player.id)">Keep Gold</button>
-                        <button class="player-details__check--lost" @click="lostGame(player.id)">Lost Game</button>
+                        <button class="player-details__check--keep" @click.once="keepGold(player.id)">Keep Gold</button>
+                        <button class="player-details__check--lost" @click.once="lostGame(player.id)">Lost Game</button>
                     </div>
                 </div>
             </section>
@@ -26,6 +25,11 @@
 
         </section>
         <section class="generator-card">
+            <div class="reward">
+                <div class="reward__gold">
+                    <p class="reward__gold--text">Gold: {{ earnedGold }}</p>
+                </div>
+            </div>
             <div class="between">
                 <div class="between__number">
                     <input v-model="between.min" class="between__number--input" type="text">
@@ -42,7 +46,6 @@
                     <button @click="generateNumber()" class="generate__random-number--button">Generate Random Number</button>
                 </div>
             </div>
-                
         </section>
     </div>
 </template>
@@ -53,7 +56,7 @@ export default{
     data(){
         return {
             between: { min: 0, max: 0 },
-            playerGold: []
+            earnedGold: 0,
         }
     },
     computed: {
@@ -61,25 +64,25 @@ export default{
             return this.$store.state.players
         }
     },
-    mounted(){
-        this.players.forEach((player, index) => {
-            this.playerGold[player.id] = 0
-        });
-        console.log(this.playerGold)
-    },
     methods: {
         generateNumber(){
             if(!isNaN(this.between.min) && !isNaN(this.between.max)){
-                this.players.forEach((player, index) => {
-                    document.getElementById(`randomNumber${index}`).innerText = Math.floor(Math.random() * (this.between.max - this.between.min + 1)) + Number(this.between.min)
+                this.players.forEach((player) => {
+                    document.getElementById(`randomNumber${player.id}`).innerText = Math.floor(Math.random() * (this.between.max - this.between.min + 1)) + Number(this.between.min)
                 });
+                this.earnedGold += (this.between.min < 50) ? 5 : 10
             }
             else{
                 alert("Please enter a valid number")
             }
         },
         keepGold(playerID){
-            this.$store.commit('addPlayerGold', playerID)
+            console.log(this.players)
+            this.$store.commit('addPlayerGold', {id: playerID, earnedGold: this.earnedGold})
+            document.getElementById(`roleCard${playerID}`).classList.add("keep")
+        },
+        lostGame(playerID){
+            document.getElementById(`roleCard${playerID}`).classList.add("lost")
         }
     }
 }

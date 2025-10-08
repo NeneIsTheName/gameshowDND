@@ -11,18 +11,22 @@ const store = createStore({
     mutations: {
         addPlayer(state, players){
             state.players = []
-            
+
             players.forEach(player => {
                     if(player !== ""){
                         state.players.push({
                         id: state.players.length + 1,
                         name: player.trim(),
-                        gold: 5,
+                        gold: 0,
                         playing: true
                     })
                 }
             });
         },
+        addPlayerGold(state, playerInfo){
+            const player = state.players.find(player => (player.id === playerInfo.id))
+            if(player.playing) player.gold += playerInfo.earnedGold
+        }
     },
 
     plugins: [
