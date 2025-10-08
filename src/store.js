@@ -23,6 +23,10 @@ const store = createStore({
                 }
             });
         },
+        PlayerStartGold(state, playerInfo){
+            const player = state.players.find(player => (player.id === playerInfo.id))
+            player.gold = playerInfo.startGold
+        },
         addPlayerGold(state, playerInfo){
             const player = state.players.find(player => (player.id === playerInfo.id))
             if(player.playing) player.gold += playerInfo.earnedGold

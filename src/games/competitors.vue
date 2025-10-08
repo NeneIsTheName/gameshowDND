@@ -10,10 +10,9 @@
                 <div class="body__form">
                     <input @input="add_names($event.target.value)" class="body__form--input">
                 </div>
-                <div class="body__competitors">
-                    <p v-for="player in this.$store.state.players" class="body__competitors--names">
-                        {{ player.name }}
-                    </p>
+                <div v-for="player in this.$store.state.players" class="body__competitors">
+                        <label class="body__competitors--names">{{ player.name }} | Gold: </label>
+                        <span contenteditable="true" class="body__competitors--input" @input="start_gold($event, player.id)">0</span>
                 </div>
             </div>
             <div class="footer">
@@ -34,6 +33,10 @@ export default{
             const players = name_list.trim().split(",")
             this.$store.commit('addPlayer', players)
         },
+        start_gold(earnedGold, playerID){
+            this.$store.commit('PlayerStartGold', {id: playerID, startGold: Number(earnedGold.target.innerText)})
+            console.log(this.$store.state.players)
+        }
     },
 }
 </script>
