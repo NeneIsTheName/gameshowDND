@@ -13,6 +13,11 @@ const router = createRouter({
       name: 'role-D100',
       component: () => import('./games/roleD100.vue')
     },
+        {
+      path: '/stealOrDeal',
+      name: 'stealOrDeal',
+      component: () => import('./games/stealOrDeal.vue')
+    },
   ],
 })
 
