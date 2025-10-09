@@ -1,5 +1,6 @@
 <template>
 <header_file title="RoleD100"/>
+
 <main class="main">
     <div class="players-roleD100">
         <section v-for="player in this.players" class="role-card" :id="`roleCard${player.id}`">
