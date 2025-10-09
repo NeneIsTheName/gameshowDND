@@ -69,7 +69,7 @@ export default{
         generateNumber(){
             if(!isNaN(this.between.min) && !isNaN(this.between.max)){
                 this.players.forEach((player) => {
-                    document.getElementById(`randomNumber${player.id}`).innerText = Math.floor(Math.random() * (this.between.max - this.between.min + 1)) + this.between.min
+                    document.getElementById(`randomNumber${player.id}`).innerText = Math.floor(Math.random() * (this.between.max - this.between.min + 1)) + Number(this.between.min)
                 });
                 this.earnedGold += (this.between.min < 50) ? 5 : 10
                 document.getElementById("earnedGold").innerText = this.earnedGold
