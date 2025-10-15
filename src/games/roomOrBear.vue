@@ -4,30 +4,34 @@
 <main class="main">
     <section class="roomOrBear">
         <div class="rooms">
-            <draggable
-                :list="null"
-                group="players"
-                draggable=".rooms__room--list"
-                :sort="false"
-                v-for="room in players_drag.length"
-                class="rooms__room"
-                :style="{width: `${100/players_drag.length}%`}"
-            >
-                <p class="rooms__room--title">Room {{ room }}</p>
-                <p class="rooms__room--list" v-for="player in players_drag.filter(player => player.list === room)">{{ player.name }}</p>
-            </draggable>
+            <div class="room" v-for="(room, index) in rooms" :style="{width: `${100/rooms.length}%`}">
+                <div class="room__title">
+                    <p  class="room__title--text">Room {{ index+1 }}</p>
+                </div>
+                <draggable
+                    :list="room"
+                    group="players"
+                    draggable=".room__list--player"
+                    animation="300"
+                    class="room__list"
+                >
+                    <template #item="{ element: player }">
+                        <p class="room__list--player">{{ player.name }}</p>
+                    </template>
+                </draggable>
+            </div>
         </div>
         <div class="players">
             <draggable
-                :list="null"
+                :list="players"
                 group="players"
-                draggable=".players__list--item"
-                :sort="false"
+                draggable=".players__list--player"
+                animation="300"
                 class="players__list"
             >
-                <p class="players__list--item" v-for="player in players_drag.filter(player => player.list === 0)">
-                    {{ player.name }}
-                </p>
+                <template #item="{ element: player }">
+                    <p class="players__list--player">{{ player.name }}</p>
+                </template>
             </draggable>
         </div>
     </section>
@@ -36,18 +40,18 @@
 
 <script>
 import header_file from '../components/header.vue'
-import { VueDraggableNext } from 'vue-draggable-next'
+import draggable from 'vuedraggable';
 
 export default{
     name: "roomOrBear",
     components: {
         header_file,
-        draggable: VueDraggableNext
+        draggable
     },
 
     data(){
         return {
-            players_drag: [],
+            rooms: [],
         }
     },
 
@@ -59,16 +63,8 @@ export default{
 
     mounted(){
         this.players.forEach(player => {
-            this.players_drag.push({user_id: player.id, name: player.name, list: 0})
+            this.rooms.push([])
         });
-    },
-
-    methods: {
-        players_room(room_index){
-            return this.players_drag.filter(player => player.list === room_index)
-        },
-        dropPlayer(event, num){
-        }
     },
 }
 </script>

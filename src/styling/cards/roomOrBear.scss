@@ -7,27 +7,32 @@
         display: flex;
         margin-bottom: 2rem;
 
-        &__room{
-            text-align: center;
-            border-left: 1px solid $color-border;
+        .room{
 
-            &:first-child{
-                border-left: none;
+            &__title{
+                border: solid 1px $color-border;
+                border-top: none;
+                padding: 0.2rem;
+
+                &--text{
+                    color: $color-text;
+                    text-align: center;
+                    font-weight: bold;
+                }
             }
 
-            &--title{
-                border-bottom: 1px solid $color-border;
-                font-weight: bold;
+            &__list{
+                text-align: center;
                 color: $color-text;
-                padding-bottom: 0.2rem;
-                margin-bottom: 0.2rem;
-            }
+                padding: 0.2rem 0;
+                border-left: solid 1px $color-border;
+                border-right: solid 1px $color-border;
 
-            &--list{
-                color: $color-text;
-                display: flex;
-                justify-content: center;
-                cursor: grab;
+                &--player{
+                    user-select: none;
+                    cursor: grab;
+                }
+
             }
         }
     }
@@ -35,12 +40,11 @@
     .players{
         
         &__list{
+            text-align: center;
+            color: $color-text;
 
-            &--item{
-                display: block;
-                text-align: center;
-                color: $color-text;
-                background-color: transparent;
+            &--player{
+                user-select: none;
                 cursor: grab;
             }
         }
