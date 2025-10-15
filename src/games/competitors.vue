@@ -14,8 +14,8 @@
                 <input @input="add_names($event.target.value)" class="competitor-m__form--input">
             </div>
             <div v-for="player in this.players" class="competitor-m__competitors">
-                    <p class="competitor-m__competitors--names">{{ player.name }} | Gold: </p>
-                    <span contenteditable="true" class="competitor-m__competitors--input" @input="start_gold($event, player.id)">0</span>
+                <p class="competitor-m__competitors--names">{{ player.name }} | Gold: </p>
+                <span contenteditable="true" class="competitor-m__competitors--input" @input="start_gold($event, player.id)">0</span>
             </div>
         </div>
 
