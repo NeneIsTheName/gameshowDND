@@ -13,7 +13,12 @@ const router = createRouter({
       name: 'role-D100',
       component: () => import('./games/roleD100.vue')
     },
-        {
+    {
+      path: '/roomOrBear',
+      name: 'roomOrBear',
+      component: () => import('./games/roomOrBear.vue')
+    },
+    {
       path: '/stealOrDeal',
       name: 'stealOrDeal',
       component: () => import('./games/stealOrDeal.vue')

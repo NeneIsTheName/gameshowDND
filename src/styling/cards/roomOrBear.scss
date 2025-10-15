@@ -1,0 +1,48 @@
+.roomOrBear{
+    background-color: $color-componentsBG;
+    padding: $padding-card;
+    border-radius: 1.2rem;
+
+    .rooms{
+        display: flex;
+        margin-bottom: 2rem;
+
+        &__room{
+            text-align: center;
+            border-left: 1px solid $color-border;
+
+            &:first-child{
+                border-left: none;
+            }
+
+            &--title{
+                border-bottom: 1px solid $color-border;
+                font-weight: bold;
+                color: $color-text;
+                padding-bottom: 0.2rem;
+                margin-bottom: 0.2rem;
+            }
+
+            &--list{
+                color: $color-text;
+                display: flex;
+                justify-content: center;
+                cursor: grab;
+            }
+        }
+    }
+
+    .players{
+        
+        &__list{
+
+            &--item{
+                display: block;
+                text-align: center;
+                color: $color-text;
+                background-color: transparent;
+                cursor: grab;
+            }
+        }
+    }
+}
