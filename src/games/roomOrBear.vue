@@ -19,6 +19,10 @@
                         <p class="room__list--player">{{ player.name }}</p>
                     </template>
                 </draggable>
+                <div class="room__gold">
+                    <p class="room__gold--text">Gold: </p>
+                    <span contenteditable="true" class="room__gold--input" id="earnedGold">0</span>
+                </div>
             </div>
         </div>
         <div class="players">

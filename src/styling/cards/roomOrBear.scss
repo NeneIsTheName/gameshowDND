@@ -32,7 +32,26 @@
                     user-select: none;
                     cursor: grab;
                 }
+            }
 
+            &__gold{
+                margin-top: 0.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &--text{
+                    color: $color-text;
+                }
+
+                &--input{
+                    padding: 0 0.5rem;
+                    color: $color-text;
+                    border: solid 1px $color-border;
+                    &:focus{
+                        outline: none;
+                    }
+                }
             }
         }
     }
