@@ -6,7 +6,8 @@
         <div class="rooms">
             <div class="room" v-for="(room, index) in rooms" :style="{width: `${100/rooms.length}%`}">
                 <div class="room__title">
-                    <p  class="room__title--text">Room {{ index+1 }}</p>
+                    <p class="room__title--text">Room {{ index+1 }}</p>
+                    <p class="room__title--text" :id="`room${index}`"></p>
                 </div>
                 <draggable
                     :list="room"
@@ -23,6 +24,12 @@
                     <p class="room__gold--text">Gold: </p>
                     <span contenteditable="true" class="room__gold--input" id="earnedGold">0</span>
                 </div>
+            </div>
+        </div>
+        <div class="randomizer">
+            <div class="randomizer__room">
+                <button class="randomizer__room--Randomize" @click="randomizeRoom">Randomize Room</button>
+                <button class="randomizer__room--gold">Add Gold</button>
             </div>
         </div>
         <div class="players">
@@ -56,6 +63,7 @@ export default{
     data(){
         return {
             rooms: [],
+            specialRoom: 0,
         }
     },
 
@@ -70,6 +78,24 @@ export default{
             this.rooms.push([])
         });
     },
+    methods: {
+        randomizeRoom(){
+            this.rooms.forEach((room, index) => {
+                document.getElementById(`room${index}`).innerText = "Room"
+            })
+
+            let bears = Math.floor(this.rooms.length/2)
+            let madeBears = 0
+            while(madeBears < bears){
+                const room = Math.floor(Math.random() * this.rooms.length)
+
+                if(document.getElementById(`room${room}`).innerText !== "Bear"){
+                    document.getElementById(`room${room}`).innerText = "Bear"
+                    madeBears++
+                }
+            }
+        }
+    }
 }
 </script>
 
