@@ -7,10 +7,11 @@
             <div class="room" v-for="(room, index) in rooms" :style="{width: `${100/rooms.length}%`}">
                 <div class="room__title">
                     <p class="room__title--text">Room {{ index+1 }}</p>
-                    <p class="room__title--text" :id="`room${index}`"></p>
+                    <p class="room__title--text" :id="`room${index}`">Room</p>
                 </div>
                 <draggable
                     :list="room"
+                    :item-key="`${index+1}`"
                     group="players"
                     draggable=".room__list--player"
                     animation="300"
@@ -22,7 +23,7 @@
                 </draggable>
                 <div class="room__gold">
                     <p class="room__gold--text">Gold: </p>
-                    <span contenteditable="true" class="room__gold--input" id="earnedGold">0</span>
+                    <span contenteditable="true" class="room__gold--input" :id="`roomGold${index}`">0</span>
                 </div>
             </div>
         </div>
@@ -35,6 +36,7 @@
         <div class="players">
             <draggable
                 :list="players"
+                item-key="0"
                 group="players"
                 draggable=".players__list--player"
                 animation="300"
@@ -59,20 +61,17 @@ export default{
         header_file,
         draggable
     },
-
     data(){
         return {
             rooms: [],
-            specialRoom: 0,
+            offerRoom: Math.random() < 0.5,
         }
     },
-
     computed: {
         players(){
             return this.$store.state.players
         },
     },
-
     mounted(){
         this.players.forEach(player => {
             this.rooms.push([])
@@ -80,17 +79,29 @@ export default{
     },
     methods: {
         randomizeRoom(){
+            let filledRooms = []
             this.rooms.forEach((room, index) => {
                 document.getElementById(`room${index}`).innerText = "Room"
+                document.getElementById(`roomGold${index}`).innerText = 30
+                if(room.length !== 0) filledRooms.push(index)
             })
+
+            if(filledRooms.length){
+                if(this.offerRoom){
+                    const choosenRoom = Math.floor(Math.random() * filledRooms.length)
+                    document.getElementById(`room${filledRooms[choosenRoom]}`).innerText = "Offer"
+                    document.getElementById(`roomGold${filledRooms[choosenRoom]}`).innerText = "?"
+                }
+                this.offerRoom = (this.offerRoom) ? false : true
+            }
 
             let bears = Math.floor(this.rooms.length/2)
             let madeBears = 0
             while(madeBears < bears){
                 const room = Math.floor(Math.random() * this.rooms.length)
-
-                if(document.getElementById(`room${room}`).innerText !== "Bear"){
+                if(document.getElementById(`room${room}`).innerText === "Room"){
                     document.getElementById(`room${room}`).innerText = "Bear"
+                    document.getElementById(`roomGold${room}`).innerText = 15
                     madeBears++
                 }
             }
@@ -98,4 +109,3 @@ export default{
     }
 }
 </script>
-
