@@ -43,7 +43,7 @@
                 class="players__list"
             >
                 <template #item="{ element: player }">
-                    <p class="players__list--player">{{ player.name }} | {{ player.gold }}</p>
+                    <p class="players__list--player">{{ player.name }}</p>
                 </template>
             </draggable>
         </div>
