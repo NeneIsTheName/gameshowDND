@@ -28,7 +28,6 @@ const store = createStore({
             player.gold = Number(playerInfo.startGold)
         },
         addGold(state, playerInfo){
-            console.log(playerInfo)
             const player = state.players.find(player => (player.id === playerInfo.id))
             if(player.playing) player.gold += Number(playerInfo.earnedGold)
         }
