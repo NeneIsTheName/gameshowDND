@@ -8,11 +8,12 @@
         margin-bottom: 2rem;
 
         .room{
+            border: none 1px $color-border;
+            border-style: none solid;
 
             &__title{
-                border: solid 1px $color-border;
-                border-top: none;
-                padding: 0.2rem;
+                padding-bottom: 0.2rem;
+                border-bottom: solid 1px $color-border;
 
                 &--text{
                     color: $color-text;
@@ -25,8 +26,6 @@
                 text-align: center;
                 color: $color-text;
                 padding: 0.2rem 0;
-                border-left: solid 1px $color-border;
-                border-right: solid 1px $color-border;
 
                 &--player{
                     user-select: none;
@@ -53,6 +52,27 @@
                         outline: none;
                     }
                 }
+            }
+        }
+    }
+
+    .randomizer{
+        
+        &__room{
+            display: flex;
+            justify-content: center;
+            gap: 0.2rem;
+
+            &--randomize{
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
+            }
+
+            &--gold{
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
             }
         }
     }

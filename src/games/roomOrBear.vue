@@ -29,7 +29,7 @@
         </div>
         <div class="randomizer">
             <div class="randomizer__room">
-                <button class="randomizer__room--Randomize" @click="randomizeRoom">Randomize Room</button>
+                <button class="randomizer__room--randomize" @click="randomizeRoom">Randomize Room</button>
                 <button class="randomizer__room--gold"  @click="earndGold">Add Gold</button>
             </div>
         </div>
