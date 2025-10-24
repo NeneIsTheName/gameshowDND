@@ -30,7 +30,7 @@
         <div class="randomizer">
             <div class="randomizer__room">
                 <button class="randomizer__room--Randomize" @click="randomizeRoom">Randomize Room</button>
-                <button class="randomizer__room--gold">Add Gold</button>
+                <button class="randomizer__room--gold"  @click="earndGold">Add Gold</button>
             </div>
         </div>
         <div class="players">
@@ -43,7 +43,7 @@
                 class="players__list"
             >
                 <template #item="{ element: player }">
-                    <p class="players__list--player">{{ player.name }}</p>
+                    <p class="players__list--player">{{ player.name }} | {{ player.gold }}</p>
                 </template>
             </draggable>
         </div>
@@ -65,12 +65,8 @@ export default{
         return {
             rooms: [],
             offerRoom: Math.random() < 0.5,
+            players: this.$store.state.players.slice()
         }
-    },
-    computed: {
-        players(){
-            return this.$store.state.players
-        },
     },
     mounted(){
         this.players.forEach(player => {
@@ -95,7 +91,7 @@ export default{
                 this.offerRoom = (this.offerRoom) ? false : true
             }
 
-            let bears = Math.floor(this.rooms.length/2)
+            const bears = Math.floor(this.rooms.length/2)
             let madeBears = 0
             while(madeBears < bears){
                 const room = Math.floor(Math.random() * this.rooms.length)
@@ -105,6 +101,14 @@ export default{
                     madeBears++
                 }
             }
+        },
+        earndGold(){
+            this.rooms.forEach((room, room_i) => {
+                let roomGold = document.getElementById(`roomGold${room_i}`).innerText
+                room.forEach(player => {
+                    this.$store.commit('addGold', {id: player.id, earnedGold: roomGold})
+                })
+            })
         }
     }
 }

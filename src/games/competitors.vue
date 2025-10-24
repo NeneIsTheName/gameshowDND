@@ -47,7 +47,7 @@ export default{
             this.$store.commit('addPlayer', players)
         },
         start_gold(earnedGold, playerID){
-            this.$store.commit('startGold', {id: playerID, startGold: Number(earnedGold.target.innerText)})
+            this.$store.commit('startGold', {id: playerID, startGold: earnedGold.target.innerText})
         }
     },
 }
