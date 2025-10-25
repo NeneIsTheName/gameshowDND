@@ -75,9 +75,10 @@ export default{
     },
     methods: {
         randomizeRoom(){
+            //All filled rooms.
             let filledRooms = []
 
-            //Sets every room to his default and checks if room is filled. if it is filled it puts this room in the: let filledRooms.
+            //Sets every room to his default and checks if room is filled. (If room is filled put room in: let filledRooms)
             this.rooms.forEach((room, index) => {
                 document.getElementById(`room${index}`).innerText = "Room"
                 document.getElementById(`roomGold${index}`).innerText = 40
@@ -106,7 +107,7 @@ export default{
                 }
             }
 
-            //Checks if room isn't the special room and if room has 3 or more players in it. If it does it removes 10 gold.
+            //Checks if room isn't the special room and if room has 3 or more players in it. (If it does it removes 10 gold)
             this.rooms.forEach((room, index) => {
                 if(document.getElementById(`roomGold${index}`).innerText !== "?" && room.length > 2){
                     document.getElementById(`roomGold${index}`).innerText -= 10
