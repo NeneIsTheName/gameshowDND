@@ -76,12 +76,15 @@ export default{
     methods: {
         randomizeRoom(){
             let filledRooms = []
+
+            //Sets every room to his default and checks if room is filled. if it is filled it puts this room in the: let filledRooms.
             this.rooms.forEach((room, index) => {
                 document.getElementById(`room${index}`).innerText = "Room"
-                document.getElementById(`roomGold${index}`).innerText = 30
-                if(room.length !== 0) filledRooms.push(index)
+                document.getElementById(`roomGold${index}`).innerText = 40
+                if(room.length) filledRooms.push(index)
             })
 
+            //Creates the offer room and this can only be a room that is filled. (this room is created 1/2 times)
             if(filledRooms.length){
                 if(this.offerRoom){
                     const choosenRoom = Math.floor(Math.random() * filledRooms.length)
@@ -91,16 +94,24 @@ export default{
                 this.offerRoom = (this.offerRoom) ? false : true
             }
 
+            //Creates bear rooms. (it can only be a bear room if it is a default room and not the special room)
             const bears = Math.floor(this.rooms.length/2)
             let madeBears = 0
             while(madeBears < bears){
                 const room = Math.floor(Math.random() * this.rooms.length)
                 if(document.getElementById(`room${room}`).innerText === "Room"){
                     document.getElementById(`room${room}`).innerText = "Bear"
-                    document.getElementById(`roomGold${room}`).innerText = 15
+                    document.getElementById(`roomGold${room}`).innerText = 25
                     madeBears++
                 }
             }
+
+            //Checks if room isn't the special room and if room has 3 or more players in it. If it does it removes 10 gold.
+            this.rooms.forEach((room, index) => {
+                if(document.getElementById(`roomGold${index}`).innerText !== "?" && room.length > 2){
+                    document.getElementById(`roomGold${index}`).innerText -= 10
+                }
+            })
         },
         earndGold(){
             this.rooms.forEach((room, room_i) => {
