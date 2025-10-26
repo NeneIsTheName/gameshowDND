@@ -1,0 +1,15 @@
+.footer{
+    background-color: $color-componentsBG;
+    padding: $padding-card;
+    border-radius: 25% 25% 0 0;
+
+    &__text{
+        text-align: center;
+
+        &--link{
+            color: $color-text;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+}

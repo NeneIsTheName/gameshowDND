@@ -88,10 +88,11 @@
 }
 
 .generator-card{
+    margin-top: 2rem;
     background-color: $color-componentsBG;
     width: 100%;
     padding: $padding-card;
-    border-radius: 2rem 2rem 0 0;
+    border-radius: 2rem;
 
     .reward{
 

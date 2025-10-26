@@ -18,41 +18,45 @@
             </div>
         </section>
     </div>
+
+    <section class="generator-card">
+        <div class="reward">
+            <div class="reward__gold">
+                <p class="reward__gold--text">Gold:</p>
+                <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">0</span>
+            </div>
+        </div>
+        <div class="between">
+            <div class="between__number">
+                <input v-model="between.min" class="between__number--input" type="text">
+            </div>
+            <div class="between__number">
+                <p class="between__number--text">and</p>
+            </div>
+            <div class="between__number">
+                <input v-model="between.max" class="between__number--input" type="text">
+            </div>
+        </div>
+        <div class="generate">
+            <div class="generate__random-number">
+                <button @click="generateNumber()" class="generate__random-number--button">Generate Random Number</button>
+            </div>
+        </div>
+    </section>
 </main>
 
-<footer class="generator-card">
-    <div class="reward">
-        <div class="reward__gold">
-            <p class="reward__gold--text">Gold:</p>
-            <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">0</span>
-        </div>
-    </div>
-    <div class="between">
-        <div class="between__number">
-            <input v-model="between.min" class="between__number--input" type="text">
-        </div>
-        <div class="between__number">
-            <p class="between__number--text">and</p>
-        </div>
-        <div class="between__number">
-            <input v-model="between.max" class="between__number--input" type="text">
-        </div>
-    </div>
-    <div class="generate">
-        <div class="generate__random-number">
-            <button @click="generateNumber()" class="generate__random-number--button">Generate Random Number</button>
-        </div>
-    </div>
-</footer>
+<footer_file link="roomOrBear" />
 </template>
 
 <script>
 import header_file from '../components/header.vue';
+import footer_file from '../components/footer.vue';
 
 export default{
     name: "roleD100",
     components: {
         header_file,
+        footer_file,
     },
     data(){
         return {
