@@ -13,8 +13,8 @@ const store = createStore({
             state.players = []
 
             players.forEach(player => {
-                    if(player !== ""){
-                        state.players.push({
+                if(player !== ""){
+                    state.players.push({
                         id: state.players.length + 1,
                         name: player.trim(),
                         gold: 0,
