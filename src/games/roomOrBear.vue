@@ -49,17 +49,21 @@
         </div>
     </section>
 </main>
+<footer_file link="stealOrDeal"/>
 </template>
 
 <script>
 import header_file from '../components/header.vue'
+import footer_file from '../components/footer.vue';
 import draggable from 'vuedraggable';
+
 
 export default{
     name: "roomOrBear",
     components: {
         header_file,
-        draggable
+        footer_file,
+        draggable,
     },
     data(){
         return {

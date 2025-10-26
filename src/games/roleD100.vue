@@ -45,7 +45,7 @@
     </section>
 </main>
 
-<footer_file link="roomOrBear" />
+<footer_file link="roomOrBear"/>
 </template>
 
 <script>
