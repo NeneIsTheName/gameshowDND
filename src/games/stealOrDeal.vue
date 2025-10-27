@@ -43,16 +43,18 @@ export default{
             return this.$store.state.players
         },
         pairedPlayers(){
-            // shuffle players so it will be random who is playing against who.
+            // Shuffle players so it will be random who is playing against who.
             this.shuffled_players = this.players.map(player => ({player, sort: Math.random()}))
-                                         .sort((player, place) => player.sort - place.sort)
-                                         .map(({ player }) => player)
+                                        .sort((player, place) => player.sort - place.sort)
+                                        .map(({ player }) => player)
 
+            // Create pairs of the shuffled_players.
             let pairs = []
             for(let i=0; i<this.shuffled_players.length-1; i+=2){
                 pairs.push(this.shuffled_players.slice(i, i+2))
             }
 
+            //If shuffled_players is uneven the last player in the array will be the special_player
             let special_player = false
             if(this.shuffled_players.length % 2 !== 0){
                 special_player = this.shuffled_players[this.shuffled_players.length-1]
