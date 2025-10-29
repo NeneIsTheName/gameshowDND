@@ -54,7 +54,7 @@
 
 <script>
 import header_file from '../components/header.vue'
-import footer_file from '../components/footer.vue';
+import footer_file from '../components/footer.vue'
 import draggable from 'vuedraggable';
 
 

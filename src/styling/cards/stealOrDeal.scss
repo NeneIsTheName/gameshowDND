@@ -4,44 +4,128 @@
     border-radius: 1.2rem;
 
     .game{
+        &__text{
+            text-align: center;
+            margin-bottom: 0.2rem;
+
+            &--title{
+                color: $color-text;
+                font-weight: bold;
+            }
+        }
+
         &__vs{
             display: flex;
             justify-content: space-between;
             border: solid $color-border 1px;
             padding: 0.7rem 2rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
+            border-radius: 1.2rem;
+
+            &--player{
+                text-align: center;
+                color: $color-text;
+                margin-bottom: 0.2rem;
+            }
+
+            &--deal{
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
+                margin-right: 0.3rem;
+                background-color: $color-keep;
+                color: $color-text;
+            }
+
+            &--steal{
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
+                background-color: $color-lost;
+                color: $color-text;
+            }
+        }
+
+        &__start{
+            margin-top: 0.2rem;
+
+            &--play{
+                display: block;
+                margin: 0 auto;
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
+            }
+        }
+
+        .trust{
+            background-color: $color-keep;
+        }
+
+        .untrust{
+            background-color: $color-lost;
+        }
+    }
+
+    .special{
+        margin-top: 1.5rem;
+
+        &__text{
+            text-align: center;
+
+            &--title{
+                color: $color-text;
+                font-weight: bold;
+            }
+        }
+
+        &__game{
+            margin-top: 0.2rem;
+            padding: 0.7rem 2rem;
+            text-align: center;
+            border: solid $color-border 1px;
             border-radius: 1.2rem;
 
             &--player{
                 color: $color-text;
             }
-        }
-        &__vs:first-child{
-            margin-top: 0;
-        }
 
-        &__special{
-            margin-top: 2rem;
-
-            &--title{
-                text-align: center;
-                color: $color-text;
-            }
-
-            &--player{
-                margin-top: 0.2rem;
+            &--button{
+                display: block;
+                margin: 0 auto;
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
                 border: solid $color-border 1px;
-                border-radius: 1.2rem;
-                padding: 0.7rem 2rem;
-                color: $color-text;
-                text-align: center;
             }
         }
 
-        &__reveal{
-            margin-top: 1rem;
+        &__start{
+            margin-top: 0.2rem;
 
-            &--gold{
+            &--play{
+                display: block;
+                margin: 0 auto;
+                padding: 0.3rem 0.9rem;
+                border-radius: 1rem;
+                border: solid $color-border 1px;
+            }
+        }
+
+        .win{
+            background-color: $color-keep;
+        }
+
+        .lost{
+            background-color: $color-lost;
+        }
+    }
+
+    .reveal{
+        margin-top: 1.5rem;
+
+        &__gold{
+
+            &--button{
                 display: block;
                 margin: 0 auto;
                 padding: 0.3rem 0.9rem;
@@ -50,4 +134,8 @@
             }
         }
     }
+}
+
+.game__text + .game__vs {
+  margin-top: 0;
 }
