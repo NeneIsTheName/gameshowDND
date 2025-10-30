@@ -7,7 +7,7 @@
             <div class="game__text">
                 <p class="game__text--title">Trust Game:</p>
             </div>
-            <div class="game__vs" v-for="(pair, index) in pairedPlayers.pairs" :id="`trust${index}`">
+            <div class="game__vs" v-for="(pair, index) in pairs" :id="`trust${index}`">
                 <div>
                     <p class="game__vs--player">{{ pair[0].name }} <span v-if="showGold">| Gold: {{ pair[0].gold }}</span></p>
                     <button class="game__vs--deal" @click.once="pair[0].deal = true">Deal</button>
@@ -23,18 +23,18 @@
                 <button class="game__start--play" @click.once="trust_game()">Play</button>
             </div>
         </div>
-        <div class="special" v-if="pairedPlayers.special_game">
+        <div class="special" v-if="special_player">
             <div class="special__text">
                 <p class="special__text--title">Special Game:</p>
             </div>
             <div class="special__game" id="specialGame">
                 <p class="special__game--player">
-                    {{ pairedPlayers.special_game.name }}
-                    <span v-if="showGold">| Gold: {{ pairedPlayers.special_game.gold }}</span>
+                    {{ special_player.name }}
+                    <span v-if="showGold">| Gold: {{ special_player.gold }}</span>
                 </p>
             </div>
             <div class="special__start">
-                <button class="special__start--play" @click.once="special_game(pairedPlayers.special_game.id)">Play</button>
+                <button class="special__start--play" @click.once="special_game(special_player)">Play</button>
             </div>
         </div>
         <div class="reveal">
@@ -45,7 +45,7 @@
     </section>
 </main>
 
-<footer_file link="thanksForPlaying"/>
+<footer_file link="#"/>
 </template>
 
 <script>
@@ -62,56 +62,70 @@ export default{
     data(){
         return {
             showGold: false,
+            pairs: [],
+            special_player: false
         }
     },
     computed: {
         players(){
             return this.$store.state.players
         },
-        pairedPlayers(){
-            // Shuffle players so it will be random who is playing against who.
-            const shuffled_players = this.players.map(player => ({player, sort: Math.random()}))
-                                         .sort((player, place) => player.sort - place.sort)
-                                         .map(({ player }) => player)
+    },
+    mounted(){
+        // Shuffle players so it will be random who is playing against who.
+        const shuffled_players = this.players.map(player => ({player, sort: Math.random()}))
+                                             .sort((player, place) => player.sort - place.sort)
+                                             .map(({ player }) => player)
 
-            //If shuffled_players is uneven the player with the smallest ammount of gold in the array will be the special_game.
-            let special_game = false
-            if(shuffled_players.length % 2 !== 0){
-                const lowestGold = Math.min(...shuffled_players.map(player => player.gold))
-                const players = shuffled_players.filter(player => player.gold === lowestGold)
-                const player_choosen = players[Math.floor(Math.random() * players.length)]
-                const player_index = shuffled_players.findIndex(player => player.id === player_choosen.id)
-                shuffled_players.splice(player_index, 1);
-                special_game = player_choosen
-            }
+        //If shuffled_players is uneven the player with the smallest ammount of gold in the array will be the special_game.
+        if(shuffled_players.length % 2 !== 0){
+            const lowestGold = Math.min(...shuffled_players.map(player => player.gold))
+            const players = shuffled_players.filter(player => player.gold === lowestGold)
+            const player_choosen = players[Math.floor(Math.random() * players.length)]
+            const player_index = shuffled_players.findIndex(player => player.id === player_choosen.id)
+            shuffled_players.splice(player_index, 1);
+            this.special_player = player_choosen
+        }
 
-            // Create pairs of the shuffled_players.
-            let pairs = []
-            for(let i=0; i<shuffled_players.length-1; i+=2){
-                pairs.push(shuffled_players.slice(i, i+2))
-            }
-
-            return {pairs, special_game}
+        // Create pairs of the shuffled_players.
+        for(let i=0; i<shuffled_players.length-1; i+=2){
+            this.pairs.push(shuffled_players.slice(i, i+2))
         }
     },
     methods: {
         trust_game(){
-            this.pairedPlayers.pairs.forEach((pair, index) => {
+            this.pairs.forEach((pair, pair_index) => {
                 if(pair[0].deal && pair[1].deal){
-                    document.getElementById(`trust${index}`).classList.add("trust")
+                    document.getElementById(`trust${pair_index}`).classList.add("trust")
+                }
+                else if(!pair[0].deal && !pair[1].deal){
+                    pair.forEach(player => {
+                        this.$store.commit('removeGold', {id: player.id, removeGold: player.gold})
+                    })
+                    document.getElementById(`trust${pair_index}`).classList.add("untrust")
                 }
                 else{
-                    document.getElementById(`trust${index}`).classList.add("untrust")
+                    pair.forEach(player => {
+                        if(player.deal){
+                            this.$store.commit('removeGold', {id: player.id, removeGold: player.gold})
+                        }
+                        else{
+                            this.$store.commit('addGold', {id: player.id, earnedGold: player.gold})
+                        }
+                    })
+                    document.getElementById(`trust${pair_index}`).classList.add("untrust")
                 }
-            });
+            })
         },
-        special_game(id){
-            const check = Math.random() < 0.5
+        special_game(player){
+            const win = Math.random() < 0.5
             document.getElementById("specialGame").classList.remove("win", "lost")
-            if(check){
+            if(win){
+                this.$store.commit('addGold', {id: player.id, earnedGold: player.gold})
                 document.getElementById("specialGame").classList.add("win")
             }
             else{
+                this.$store.commit('removeGold', {id: player.id, removeGold: player.gold})
                 document.getElementById("specialGame").classList.add("lost")
             }
         }

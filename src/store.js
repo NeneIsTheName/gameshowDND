@@ -30,6 +30,10 @@ const store = createStore({
         addGold(state, playerInfo){
             const player = state.players.find(player => (player.id === playerInfo.id))
             if(player.playing) player.gold += Number(playerInfo.earnedGold)
+        },
+        removeGold(state, playerInfo){
+            const player = state.players.find(player => (player.id === playerInfo.id))
+            if(player.playing) player.gold -= Number(playerInfo.removeGold)
         }
     },
 
