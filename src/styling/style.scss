@@ -19,9 +19,9 @@
 @import "./components/main";
 @import "./components/footer";
 
-//Game pages
-@import "./cards/competitors";
-@import "./cards/roleD100";
-@import "./cards/liarsDice";
-@import "./cards/roomOrBear";
-@import "./cards/stealOrDeal";
+//Games
+@import "./games/competitors";
+@import "./games/roleD100";
+@import "./games/liarsDice";
+@import "./games/roomOrBear";
+@import "./games/stealOrDeal";
