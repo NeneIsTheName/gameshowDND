@@ -49,6 +49,7 @@
         </div>
     </section>
 </main>
+
 <footer_file text="Next Game" link="stealOrDeal"/>
 </template>
 

@@ -2,7 +2,9 @@
 <header_file title="Liars Dice"/>
 
 <main class="main">
-
+    <section>
+        
+    </section>
 </main>
 
 <footer_file text="Next Game" link="roomOrBear"/>
