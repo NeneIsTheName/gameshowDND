@@ -19,7 +19,13 @@
 @import "./components/main";
 @import "./components/footer";
 
-//Games
+// Cards
+@import "./cards/bigCard";
+
+// Rooms
+@import "./rooms/rooms";
+
+// Games
 @import "./games/competitors";
 @import "./games/roleD100";
 @import "./games/liarsDice";

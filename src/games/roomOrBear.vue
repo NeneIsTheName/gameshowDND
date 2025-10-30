@@ -13,12 +13,12 @@
                     :list="room"
                     :item-key="`${index+1}`"
                     group="players"
-                    draggable=".room__list--player"
+                    draggable=".room__player-list--player"
                     animation="300"
-                    class="room__list"
+                    class="room__player-list"
                 >
                     <template #item="{ element: player }">
-                        <p class="room__list--player">{{ player.name }}</p>
+                        <p class="room__player-list--player">{{ player.name }}</p>
                     </template>
                 </draggable>
                 <div class="room__gold">

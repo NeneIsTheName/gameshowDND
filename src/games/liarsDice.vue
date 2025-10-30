@@ -2,18 +2,18 @@
 <header_file title="Liars Dice"/>
 
 <main class="main">
-    <section class="liarsDice">
-        <div class="competitors">
-            <div v-for="(player, index) in this.players" class="player" :id="`player${index}`" :style="{width: `${100/this.players.length}%`}">
-                <div class="player__title">
-                    <p class="player__title--text">{{ player.name }}</p>
+    <section class="big-card">
+        <div class="rooms">
+            <div v-for="(player, index) in this.players" class="room" :id="`player${index}`" :style="{width: `${100/this.players.length}%`}">
+                <div class="room__title">
+                    <p class="room__title--text">{{ player.name }}</p>
                 </div>
-                <div class="player__gold">
-                    <p class="player__gold--text">Gold:</p>
-                    <span contenteditable="true" class="player__gold--input" :id="`earnedGold${index}`">0</span>
+                <div class="room__gold">
+                    <p class="room__gold--text">Gold:</p>
+                    <span contenteditable="true" class="room__gold--input" :id="`earnedGold${index}`">0</span>
                 </div>
-                <div class="player__lost">
-                    <button class="player__lost--button" @click.once="lostGame(player.id, index)">Lost Game</button>
+                <div class="room__lost">
+                    <button class="room__lost--button" @click.once="lostGame(player.id, index)">Lost Game</button>
                 </div>
             </div>
         </div>

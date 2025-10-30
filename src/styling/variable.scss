@@ -6,5 +6,14 @@ $color-componentsBG: #45ca18;
 $color-lost: #e02f2f;
 $color-keep: #2a95ff;
 
+// Element Paddings
 $padding-card: 1rem 0.7rem;
 $padding-input: 0.6rem 0.8rem;
+$padding-button: 0.3rem 0.9rem;
+
+//Standard Button
+@mixin button_standard{
+    padding: $padding-button;
+    border-radius: 1rem;
+    border: solid $color-border 1px;
+}
