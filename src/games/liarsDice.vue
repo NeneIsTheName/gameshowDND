@@ -2,8 +2,33 @@
 <header_file title="Liars Dice"/>
 
 <main class="main">
-    <section>
-        
+    <section class="liarsDice">
+        <div class="competitors">
+            <div v-for="(player, index) in this.players" class="player" :style="{width: `${100/this.players.length}%`}">
+                <div class="player__title">
+                    <p class="player__title--text">{{ player.name }}</p>
+                </div>
+                <div class="player__gold">
+                    <p class="player__gold--text">Gold:</p>
+                    <span contenteditable="true" class="player__gold--input" :id="`earnedGold${index}`">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="rolles">
+            <div class="rolles__form">
+                <p class="rolles__form--label">Rolles:</p>
+                <input type="text" class="rolles__form--input" @input="change_dice_counter($event.target.value)">
+            </div>
+            <div class="rolles__dice">
+                <p v-for="dice_value in dice_values" class="rolles__dice--text">{{ dice_value.dice }} = {{ dice_value.count }}</p>
+            </div>
+        </div>
+        <div class="reward">
+            <div class="reward__gold">
+                <p class="reward__gold--text">Gold:</p>
+                <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">5</span>
+            </div>
+        </div>
     </section>
 </main>
 
@@ -20,5 +45,39 @@ export default{
         header_file,
         footer_file,
     },
+    computed: {
+        players() {
+            return this.$store.state.players
+        }
+    },
+    data(){
+        return {
+            dice_values: [
+                {dice: 1,  count: 0},
+                {dice: 2, count: 0},
+                {dice: 3, count: 0},
+                {dice: 4, count: 0},
+                {dice: 5, count: 0},
+                {dice: 6, count: 0},
+            ],
+            earnedGold: 5,
+        }
+    },
+    methods: {
+        change_dice_counter(rolled_numbers){
+            //Resets each count.
+            this.dice_values.forEach(dice_value => {
+                dice_value.count = 0
+            })
+
+            //Get every role in an array.
+            const rolled_array = rolled_numbers.trim().split(",")
+
+            //Adds the ammount of rolled for every dice.
+            this.dice_values.forEach(dice_value => {
+                dice_value.count = rolled_array.filter(rolles => (Number(rolles) === dice_value.dice)).length
+            })
+        }
+    }
 }
 </script>
