@@ -1,7 +1,7 @@
 <template>
 <footer class="footer">
     <div class="footer__text">
-        <router-link :to="`/${ link }`" class="footer__text--link">Next Game</router-link>
+        <router-link :to="`/${ link }`" class="footer__text--link">{{ text }}</router-link>
     </div>
 </footer>
 </template>
@@ -10,6 +10,6 @@
 
 export default {
     name: "footer",
-    props: ["link"],
+    props: ["text", "link"],
 }
 </script>

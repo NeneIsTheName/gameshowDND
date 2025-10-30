@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import('./games/roleD100.vue')
     },
     {
+      path: '/liarsDice',
+      name: 'liarsDice',
+      component: () => import('./games/liarsDice.vue')
+    },
+    {
       path: '/roomOrBear',
       name: 'roomOrBear',
       component: () => import('./games/roomOrBear.vue')

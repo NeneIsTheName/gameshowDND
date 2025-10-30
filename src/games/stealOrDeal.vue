@@ -45,7 +45,7 @@
     </section>
 </main>
 
-<footer_file link="#"/>
+<footer_file text="End" link="#"/>
 </template>
 
 <script>

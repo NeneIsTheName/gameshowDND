@@ -18,23 +18,21 @@
                 <span contenteditable="true" class="competitor-m__competitors--input" @input="start_gold($event, player.id)">0</span>
             </div>
         </div>
-
-        <div class="competitor-f">
-            <p class="competitor-f__text">
-                <router-link to="/role-D100" class="competitor-f__text--link">Start Game ONE</router-link>
-            </p>
-        </div>
     </section>
 </main>
+
+<footer_file text="Start Game" link="role-D100"/>
 </template>
 
 <script>
-import header_file from '../components/header.vue';
+import header_file from '../components/header.vue'
+import footer_file from '../components/footer.vue'
 
 export default{
     name: "competitors",
     components: {
         header_file,
+        footer_file,
     },
     computed: {
         players(){

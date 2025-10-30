@@ -49,7 +49,7 @@
         </div>
     </section>
 </main>
-<footer_file link="stealOrDeal"/>
+<footer_file text="Next Game" link="stealOrDeal"/>
 </template>
 
 <script>
