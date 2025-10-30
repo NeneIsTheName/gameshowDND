@@ -4,13 +4,16 @@
 <main class="main">
     <section class="liarsDice">
         <div class="competitors">
-            <div v-for="(player, index) in this.players" class="player" :style="{width: `${100/this.players.length}%`}">
+            <div v-for="(player, index) in this.players" class="player" :id="`player${index}`" :style="{width: `${100/this.players.length}%`}">
                 <div class="player__title">
                     <p class="player__title--text">{{ player.name }}</p>
                 </div>
                 <div class="player__gold">
                     <p class="player__gold--text">Gold:</p>
                     <span contenteditable="true" class="player__gold--input" :id="`earnedGold${index}`">0</span>
+                </div>
+                <div class="player__lost">
+                    <button class="player__lost--button" @click.once="lostGame(player.id, index)">Lost Game</button>
                 </div>
             </div>
         </div>
@@ -77,6 +80,11 @@ export default{
             this.dice_values.forEach(dice_value => {
                 dice_value.count = rolled_array.filter(rolles => (Number(rolles) === dice_value.dice)).length
             })
+        },
+        lostGame(playerID, index){
+            const earnedGold = Number(document.getElementById(`earnedGold${index}`).innerText)+Number(document.getElementById("earnedGold").innerText)
+            this.$store.commit('addGold', {id: playerID, earnedGold: earnedGold})
+            document.getElementById(`player${index}`).classList.add("lost")
         }
     }
 }
