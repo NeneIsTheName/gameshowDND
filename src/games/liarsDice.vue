@@ -17,6 +17,7 @@
                 </div>
             </div>
         </div>
+
         <div class="liarsDice">
             <div class="rolles">
                 <div class="rolles__form">
@@ -27,11 +28,11 @@
                     <p v-for="dice_value in dice_values" class="rolles__dice--text">{{ dice_value.dice }} = {{ dice_value.count }}</p>
                 </div>
             </div>
-            <div class="reward">
-                <div class="reward__gold">
-                    <p class="reward__gold--text">Gold:</p>
-                    <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">5</span>
-                </div>
+        </div>
+        <div class="reward">
+            <div class="reward__gold">
+                <p class="reward__gold--text">Gold:</p>
+                <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">5</span>
             </div>
         </div>
     </section>

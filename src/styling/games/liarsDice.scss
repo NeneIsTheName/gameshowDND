@@ -1,8 +1,7 @@
 .liarsDice{
-    margin-top: 2rem;
+    margin: 2rem 0;
 
     .rolles{
-        margin-top: 2rem;
 
         &__form{
 
@@ -12,42 +11,16 @@
             }
 
             &--input{
-                width: 100%;
-                padding: $padding-input;
-                border-radius: 1rem;
-                border: solid $color-border 1px;
-                margin: 0.2rem;
+                @include input_standard;
+                margin: 0.3rem 0;
             }
         }
 
         &__dice{
-            margin-top: 0.5rem;
 
             &--text{
                 text-align: center;
                 color: $color-text;
-            }
-        }
-    }
-
-    .reward{
-
-        &__gold{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.2rem;
-            margin-top: 2rem;
-
-            &--text{
-                color: $color-text;
-                font-weight: bold;
-                font-size: 1.5rem;
-            }
-
-            &--input{
-                font-size: 1.5rem;
-                @include input_gold;
             }
         }
     }

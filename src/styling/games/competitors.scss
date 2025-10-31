@@ -22,10 +22,7 @@
             margin-bottom: 1rem;
 
             &--input{
-                width: 100%;
-                padding: $padding-input;
-                border-radius: 1rem;
-                border: solid $color-border 1px;
+                @include input_standard;
             }
         }
 
