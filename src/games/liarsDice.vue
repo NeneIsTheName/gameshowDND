@@ -3,7 +3,7 @@
 
 <main class="main">
     <section class="big-card">
-        <div class="rooms">
+        <div class="rooms-list">
             <div v-for="(player, index) in this.players" class="room" :id="`player${index}`" :style="{width: `${100/this.players.length}%`}">
                 <div class="room__title">
                     <p class="room__title--text">{{ player.name }}</p>
@@ -17,19 +17,21 @@
                 </div>
             </div>
         </div>
-        <div class="rolles">
-            <div class="rolles__form">
-                <p class="rolles__form--label">Rolles:</p>
-                <input type="text" class="rolles__form--input" @input="change_dice_counter($event.target.value)">
+        <div class="liarsDice">
+            <div class="rolles">
+                <div class="rolles__form">
+                    <p class="rolles__form--label">Rolles:</p>
+                    <input type="text" class="rolles__form--input" @input="change_dice_counter($event.target.value)">
+                </div>
+                <div class="rolles__dice">
+                    <p v-for="dice_value in dice_values" class="rolles__dice--text">{{ dice_value.dice }} = {{ dice_value.count }}</p>
+                </div>
             </div>
-            <div class="rolles__dice">
-                <p v-for="dice_value in dice_values" class="rolles__dice--text">{{ dice_value.dice }} = {{ dice_value.count }}</p>
-            </div>
-        </div>
-        <div class="reward">
-            <div class="reward__gold">
-                <p class="reward__gold--text">Gold:</p>
-                <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">5</span>
+            <div class="reward">
+                <div class="reward__gold">
+                    <p class="reward__gold--text">Gold:</p>
+                    <span contenteditable="true" @input="earnedGold = Number($event.target.innerText)" class="reward__gold--input" id="earnedGold">5</span>
+                </div>
             </div>
         </div>
     </section>

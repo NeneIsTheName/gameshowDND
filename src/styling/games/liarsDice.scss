@@ -1,66 +1,11 @@
 .liarsDice{
-    background-color: $color-componentsBG;
-    padding: $padding-card;
-    border-radius: 1.2rem;
-
-    .competitors{
-        display: flex;
-
-        .player{
-            border: none 1px $color-border;
-            border-style: none solid;
-            padding: 0.2rem 0;
-
-            &__title{
-                padding-bottom: 0.2rem;
-                border-bottom: solid 1px $color-border;
-
-                &--text{
-                    color: $color-text;
-                    text-align: center;
-                    font-weight: bold;
-                }
-            }
-
-            &__gold{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-top: 0.2rem;
-                gap: 0.2rem;
-
-                &--text{
-                    color: $color-text;
-                }
-
-                &--input{
-                    border: solid $color-border 1px;
-                    padding: 0 0.5rem;
-                    color: $color-text;
-                    &:focus{
-                        outline: none;
-                    }
-                }
-            }
-
-            &__lost{
-                text-align: center;
-                margin-top: 0.2rem;
-
-                &--button{
-                    margin-top: 0.2rem;
-                    padding: 0.3rem 0.9rem;
-                    border-radius: 1rem;
-                    border: solid $color-border 1px;
-                }
-            }
-        }
-    }
+    margin-top: 2rem;
 
     .rolles{
         margin-top: 2rem;
 
         &__form{
+
             &--label{
                 text-align: center;
                 color: $color-text;
@@ -101,18 +46,9 @@
             }
 
             &--input{
-                border: solid $color-border 1px;
-                padding: 0 0.5rem;
                 font-size: 1.5rem;
-                color: $color-text;
-                &:focus{
-                    outline: none;
-                }
+                @include input_gold;
             }
         }
-    }
-
-    .lost{
-        background-color: $color-lost;
     }
 }

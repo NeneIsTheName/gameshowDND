@@ -2,8 +2,8 @@
 <header_file title="Room or Bear"/>
 
 <main class="main">
-    <section class="roomOrBear">
-        <div class="rooms">
+    <section class="big-card">
+        <div class="rooms-list">
             <div class="room" v-for="(room, index) in rooms" :style="{width: `${100/rooms.length}%`}">
                 <div class="room__title">
                     <p class="room__title--text">Room {{ index+1 }}</p>
@@ -27,25 +27,27 @@
                 </div>
             </div>
         </div>
-        <div class="randomizer">
-            <div class="randomizer__room">
-                <button class="randomizer__room--button" @click="randomizeRoom">Randomize Room</button>
-                <button class="randomizer__room--button"  @click="earndGold">Add Gold</button>
+        <div class="roomOrBear">
+            <div class="randomizer-rooms">
+                <div class="randomizer-rooms__randomize">
+                    <button class="randomizer-rooms__randomize--button" @click="randomizeRoom">Randomize Room</button>
+                    <button class="randomizer-rooms__randomize--button" @click="earndGold">Add Gold</button>
+                </div>
             </div>
-        </div>
-        <div class="players">
-            <draggable
-                :list="players"
-                item-key="0"
-                group="players"
-                draggable=".players__list--player"
-                animation="300"
-                class="players__list"
-            >
-                <template #item="{ element: player }">
-                    <p class="players__list--player">{{ player.name }}</p>
-                </template>
-            </draggable>
+            <div class="players-list">
+                <draggable
+                    :list="players"
+                    item-key="0"
+                    group="players"
+                    draggable=".players-list__drag--player"
+                    animation="300"
+                    class="players-list__drag"
+                >
+                    <template #item="{ element: player }">
+                        <p class="players-list__drag--player">{{ player.name }}</p>
+                    </template>
+                </draggable>
+            </div>
         </div>
     </section>
 </main>
@@ -120,8 +122,8 @@ export default{
             })
         },
         earndGold(){
-            this.rooms.forEach((room, room_i) => {
-                let roomGold = document.getElementById(`roomGold${room_i}`).innerText
+            this.rooms.forEach((room, room_index) => {
+                let roomGold = document.getElementById(`roomGold${room_index}`).innerText
                 room.forEach(player => {
                     this.$store.commit('addGold', {id: player.id, earnedGold: roomGold})
                 })

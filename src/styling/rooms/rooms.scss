@@ -1,4 +1,4 @@
-.rooms{
+.rooms-list{
     display: flex;
 
     .room{
@@ -40,12 +40,7 @@
             }
 
             &--input{
-                border: solid $color-border 1px;
-                padding: 0 0.5rem;
-                color: $color-text;
-                &:focus{
-                    outline: none;
-                }
+                @include input_gold;
             }
         }
 
@@ -58,5 +53,9 @@
                 margin-top: 0.2rem;
             }
         }
+    }
+
+    .lost{
+        background-color: $color-lost;
     }
 }

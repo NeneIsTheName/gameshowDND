@@ -1,12 +1,10 @@
 .roomOrBear{
-    background-color: $color-componentsBG;
-    padding: $padding-card;
-    border-radius: 1.2rem;
+    margin-top: 2rem;
 
-    .randomizer{
+    .randomizer-rooms{
         margin-bottom: 1rem;
         
-        &__room{
+        &__randomize{
             display: flex;
             justify-content: center;
             gap: 0.2rem;
@@ -17,9 +15,9 @@
         }
     }
 
-    .players{
+    .players-list{
         
-        &__list{
+        &__drag{
             text-align: center;
             color: $color-text;
 
