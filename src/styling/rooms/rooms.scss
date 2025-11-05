@@ -28,6 +28,25 @@
             }
         }
 
+        &__choice{
+            display: flex;
+            justify-content: center;
+            gap: 0.2rem;
+            margin-top: 0.2rem;
+
+            &--shield{
+                @include button_standard;
+                background-color: $color-keep;
+                color: $color-text
+            }
+
+            &--steal{
+                @include button_standard;
+                background-color: $color-lost;
+                color: $color-text;
+            }
+        }
+
         &__gold{
             display: flex;
             align-items: center;
@@ -53,6 +72,10 @@
                 margin-top: 0.2rem;
             }
         }
+    }
+
+    .shield{
+        background-color: $color-keep;
     }
 
     .lost{

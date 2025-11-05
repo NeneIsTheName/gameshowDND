@@ -113,13 +113,6 @@ export default{
                     madeBears++
                 }
             }
-
-            //Checks if room isn't the special room and if room has 3 or more players in it. (If it does it removes 10 gold)
-            this.rooms.forEach((room, index) => {
-                if(document.getElementById(`roomGold${index}`).innerText !== "?" && room.length > 2){
-                    document.getElementById(`roomGold${index}`).innerText -= 10
-                }
-            })
         },
         earndGold(){
             this.rooms.forEach((room, room_index) => {

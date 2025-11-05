@@ -38,7 +38,7 @@
     </section>
 </main>
 
-<footer_file text="Next Game" link="roomOrBear"/>
+<footer_file text="Next Game" link="shieldTheDeal"/>
 </template>
 
 <script>

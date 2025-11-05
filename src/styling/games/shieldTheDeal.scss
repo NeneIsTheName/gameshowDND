@@ -1,0 +1,16 @@
+.shieldTheDeal{
+    margin-top: 2rem;
+
+    .players-list{
+        margin-bottom: 2rem;
+        
+        &__choose{
+            text-align: center;
+            color: $color-text;
+
+            &--player{
+                cursor: grab;
+            }
+        }
+    }
+}
