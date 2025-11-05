@@ -1,5 +1,17 @@
 .shieldTheDeal{
-    margin-top: 2rem;
+    margin: 2rem 0;
+
+    .start{
+
+        &__round{
+
+            &--button{
+                @include button_standard;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+    }
 
     .players-list{
         margin-bottom: 2rem;

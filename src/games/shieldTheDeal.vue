@@ -6,7 +6,7 @@
         <div class="rooms-list">
             <div v-for="(player, index) in this.players" class="room" :id="`player${player.id}`" :style="{width: `${100/this.players.length}%`}">
                 <div class="room__title">
-                    <p class="room__title--text">{{ player.name }} | {{ player.gold }}</p>
+                    <p class="room__title--text">{{ player.name }}</p>
                     <p class="room__title--text">tokens: <span :id="`tokens${player.id}`">3</span></p>
                 </div>
                 <div class="room__choice">
@@ -22,8 +22,10 @@
                     <p v-if="player.id != stealer" @click="linkSteal(player.id)" class="players-list__choose--player">{{ player.name }}</p>
                 </div>
             </div>
-            <div class="">
-                <button @click="start_round()">Start Round</button>
+            <div class="start">
+                <div class="start__round">
+                    <button class="start__round--button" @click="start_round()">Start Round</button>
+                </div>
             </div>
         </div>
 
